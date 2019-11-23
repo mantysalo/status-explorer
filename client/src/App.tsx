@@ -62,6 +62,7 @@ const App: React.FC = () => {
                 <Route path='/packages/:packageName'>
                     <PackageDetails/>
                 </Route>
+                <Route>404</Route>
             </Switch>
         </Router>
     );
