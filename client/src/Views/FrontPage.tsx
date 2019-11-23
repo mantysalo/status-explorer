@@ -14,10 +14,6 @@ const List = styled.ul`
     list-style-type: none;
 `;
 
-const StyledLink = styled(Link)`
-    color: black;
-`;
-
 const MainHeader = styled.h1`
     font-size: 2em;
     font-weight: 600;
@@ -63,9 +59,9 @@ export const FrontPage = () => {
             <List>
                 {packages.map(pkg => (
                     <ListItem>
-                        <StyledLink to={`packages/${pkg}`} key={pkg}>
+                        <Link to={`packages/${pkg}`} key={pkg}>
                             {pkg}
-                        </StyledLink>
+                        </Link>
                     </ListItem>
                 ))}
             </List>
