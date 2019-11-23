@@ -17,7 +17,7 @@ router.get('/api/packages', ctx => {
 });
 
 router.get('/api/packages/names', ctx => {
-  ctx.body = packageObjects.map(pkg => pkg.packageName);
+  ctx.body = {data: packageObjects.map(pkg => pkg.packageName)};
 });
 
 router.get('/api/packages/:packageName', ctx => {
