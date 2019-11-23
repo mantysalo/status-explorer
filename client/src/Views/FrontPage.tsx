@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-const FlexCenter = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-`;
+import { FlexCenter } from '../Components/FlexCenter';
 
 const List = styled.ul`
     list-style-type: none;
