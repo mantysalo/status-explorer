@@ -1,9 +1,10 @@
 import { Parser } from './Parser';
 import { status } from './status';
 
+const parser = new Parser();
+
 describe('Parser', () => {
     it('parses a status string to an array of objects', () => {
-        const parser = new Parser();
         expect(parser.parseStatusToObjects(status)).toMatchObject([
             {
                 depends: [],
@@ -27,10 +28,11 @@ for all your bar needs`,
                 package: 'bar',
             },
             {
-                depends: ['bar'],
+                depends: ['bar (1.0.0)', ',', 'foo'],
                 package: 'baz',
                 description: 'baz package',
             },
         ]);
     });
+    expect(parser.parseStatusToObjects(status).length).toBe(3)
 });

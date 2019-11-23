@@ -9,5 +9,5 @@ Description: bar package
  for all your bar needs
 
 Package: baz
-Depends: bar
+Depends: bar (1.0.0), foo
 Description: baz package`;
