@@ -25,8 +25,8 @@ export class Parser {
                         } else if (key === 'description') {
                             packageObject[key] = splitLine[1]
                                 .trim()
-                                .replace(/(\s\.)/g, '')
-                                .replace(/\n\s/g, '\n');
+                                .replace(/\n\s/g, '\n')
+                                .replace(/\s\s/g, ' ');
                         } else {
                             packageObject[key] = splitLine[1].trim();
                         }
