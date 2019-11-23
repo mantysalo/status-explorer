@@ -2,16 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FlexCenter } from '../Components/FlexCenter';
+import { MainHeader } from '../Components/MainHeader';
 
 const List = styled.ul`
     list-style-type: none;
-`;
-
-const MainHeader = styled.h1`
-    font-size: 2em;
-    font-weight: 600;
-    margin: 8px;
-    font-family: Arial, Helvetica, sans-serif;
 `;
 
 const ListItem = styled.li`
