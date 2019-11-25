@@ -2,17 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { FrontPage } from './Views/FrontPage';
 import { PackageDetails } from './Views/PackageDetails';
+import {API_URL} from './config'
 
 const App: React.FC = () => {
   const [packageNames, setPackageNames] = useState<string[]>([])
 
   useEffect(() => {
         const fetchData = async () => {
-            const packageNames = await (await fetch('/api/packages/names')).json();
+            const packageNames = await (await fetch(`${API_URL}/api/packages/names`)).json();
             setPackageNames(packageNames.data);
         };
         fetchData();
     }, []);
+
     return (
         <Router>
             <Switch>
