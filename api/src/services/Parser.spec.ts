@@ -8,9 +8,9 @@ describe('Parser', () => {
         expect(parser.parseStatusToObjects(status)).toMatchObject([
             {
                 depends: [],
-                description: `foo package
-the best package in the world for foo based
-programming.`,
+                description: ` foo package
+ the best package in the world for foo based
+ programming.`,
                 package: 'foo',
             },
             {
@@ -23,14 +23,14 @@ programming.`,
                     '|',
                     'react',
                 ],
-                description: `bar package
-for all your bar needs`,
+                description: ` bar package
+ for all your bar needs`,
                 package: 'bar',
             },
             {
                 depends: ['bar (1.0.0)', ',', 'foo'],
                 package: 'baz',
-                description: 'baz package',
+                description: ' baz package',
             },
         ]);
     });

@@ -11,13 +11,13 @@ const enrichedPackages = enricher.enrichPackageObjects(packages);
 
 describe('Enricher', () => {
     it('includes the full description', () => {
-        const barDesc = packages.find(pkg => pkg.package === 'bar')?.description?.replace(/\n/g, ' ');
-        const bazDesc = packages.find(pkg => pkg.package === 'baz')?.description?.replace(/\n/g, ' ');
-        const fooDesc = packages.find(pkg => pkg.package === 'foo')?.description?.replace(/\n/g, ' ');
+        const barDesc = packages.find(pkg => pkg.package === 'bar')?.description.replace(/\s/g, '')
+        const bazDesc = packages.find(pkg => pkg.package === 'baz')?.description.replace(/\s/g, '')
+        const fooDesc = packages.find(pkg => pkg.package === 'foo')?.description.replace(/\s/g, '')
 
-        expect(barDesc).toBe(`${enrichedPackages[0].shortDescription} ${enrichedPackages[0].longDescription}`);
-        expect(bazDesc).toBe(`${enrichedPackages[1].shortDescription}${enrichedPackages[1].longDescription}`);
-        expect(fooDesc).toBe(`${enrichedPackages[2].shortDescription} ${enrichedPackages[2].longDescription}`);
+        expect(barDesc).toBe(`${enrichedPackages[0].shortDescription}${enrichedPackages[0].longDescription}`.replace(/\s/g, ''));
+        expect(bazDesc).toBe(`${enrichedPackages[1].shortDescription}${enrichedPackages[1].longDescription}`.replace(/\s/g, ''));
+        expect(fooDesc).toBe(`${enrichedPackages[2].shortDescription}${enrichedPackages[2].longDescription}`.replace(/\s/g, ''));
     });
 
     it('maps cross-dependencies correctly', () => {
