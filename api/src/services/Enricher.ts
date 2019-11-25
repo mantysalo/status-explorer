@@ -18,7 +18,7 @@ export class Enricher {
         return packages
             .map<EnrichedPackageShape>((pkg, _, packages) => {
                 const dependants = this.mapDependants(pkg, packages);
-                const splitDescription = pkg.description.split('\n');
+                const splitDescription = pkg.description.split(/(\n)/);
                 const shortDescription = splitDescription[0];
                 const longDescription =
                     splitDescription.slice(1).join(' ').replace(/(\s\.)/g, '\n').replace(/\n\s/g, '\n')
