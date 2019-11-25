@@ -13,7 +13,6 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
-    font-family: Helvetica, Verdana, sans-serif;
     font-size: 1.3em;
     line-height: 1.5;
     font-weight: 200
