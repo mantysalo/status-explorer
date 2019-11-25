@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FlexCenter } from '../Components/FlexCenter';
 import { MainHeader } from '../Components/MainHeader';
+
+type FrontPageProps = {
+  packageNames: string[]
+}
 
 const List = styled.ul`
     list-style-type: none;
@@ -31,20 +35,12 @@ const ListItem = styled.li`
     }
 `;
 
-export const FrontPage = () => {
-    const [packages, setPackages] = useState<string[]>([]);
-    useEffect(() => {
-        const fetchData = async () => {
-            const packageNames = await (await fetch('/api/packages/names')).json();
-            setPackages(packageNames.data);
-        };
-        fetchData();
-    }, []);
+export const FrontPage = ({packageNames}: FrontPageProps) => {
     return (
         <FlexCenter>
             <MainHeader>Packages</MainHeader>
             <List>
-                {packages.map(pkg => (
+                {packageNames.map(pkg => (
                     <ListItem>
                         <Link to={`packages/${pkg}`} key={pkg}>
                             {pkg}
