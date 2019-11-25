@@ -21,8 +21,8 @@ router.get('/api/packages/names', ctx => {
 });
 
 router.get('/api/packages/:packageName', ctx => {
-    const result = packageObjects.filter(pkg => pkg.packageName === ctx.params.packageName);
-    if (result.length === 0) return (ctx.status = 404);
+    const result = packageObjects.find(pkg => pkg.packageName === ctx.params.packageName);
+    if (!result) return (ctx.status = 404);
     return (ctx.body = result);
 });
 
