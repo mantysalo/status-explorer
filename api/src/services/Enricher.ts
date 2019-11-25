@@ -21,7 +21,7 @@ export class Enricher {
                 const splitDescription = pkg.description.split(/(\n)/);
                 const shortDescription = splitDescription[0];
                 const longDescription =
-                    splitDescription.slice(1).join(' ').replace(/(\s\.)/g, '\n').replace(/\n\s/g, '\n')
+                    splitDescription.slice(1).join(' ').replace(/\s\./g, '')
                 const enhancedDependencies: DependencyShape[] = [];
                 pkg.depends.forEach((dependency, index, dependencies) => {
                     if (dependencies[index] !== ',' && dependency !== '|') {

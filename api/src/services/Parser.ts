@@ -24,9 +24,6 @@ export class Parser {
                                     .map(dependency => dependency && dependency.trim()) || [];
                         } else if (key === 'description') {
                             packageObject[key] = splitLine[1]
-                                .trim()
-                                .replace(/\n\s/g, '\n')
-                                .replace(/\s\s/g, ' ');
                         } else {
                             packageObject[key] = splitLine[1].trim();
                         }
