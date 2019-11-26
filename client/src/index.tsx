@@ -18,7 +18,20 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-ReactDOM.render(
+if (process.env.NODE_ENV !== 'production') {
+  import('react-axe').then(axe => {
+    axe.default(React, ReactDOM, 1000);
+    ReactDOM.render(
+      <>
+          <App />
+          <Reset />
+          <GlobalStyle />
+      </>,
+      document.getElementById('root')
+  );
+  });
+} else {
+  ReactDOM.render(
     <>
         <App />
         <Reset />
@@ -26,3 +39,5 @@ ReactDOM.render(
     </>,
     document.getElementById('root')
 );
+}
+
