@@ -47,9 +47,9 @@ describe('<App/>', () => {
         fireEvent.click(fooListItem);
 
         await waitForElement(() => getByText(packageObject.packageName));
-        await waitForElement(() => getByText(packageObject.dependsOn[0].name));
-        await waitForElement(() => getByText(packageObject.dependedOnBy[0]));
-        await waitForElement(() => getByText(packageObject.shortDescription));
-        await waitForElement(() => getByText(packageObject.longDescription));
+        getByText(packageObject.dependsOn[0].name);
+        getByText(packageObject.dependedOnBy[0]);
+        getByText(packageObject.shortDescription);
+        getByText(packageObject.longDescription);
     });
 });
