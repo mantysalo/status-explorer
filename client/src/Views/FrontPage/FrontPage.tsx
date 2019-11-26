@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FlexCenter } from '../../Components/FlexCenter';
 import { MainHeader } from '../../Components/MainHeader';
-import { SubHeader } from '../PackageDetails/PackageDetails';
+import { SubHeader } from '../../Components/SubHeader';
 
 type FrontPageProps = {
     packageNames: string[];

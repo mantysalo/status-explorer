@@ -5,6 +5,7 @@ import { EnrichedPackageShape } from '../../../../api/src/services/Enricher';
 import { API_URL } from '../../config';
 import styled from 'styled-components';
 import { FlexCenter } from '../../Components/FlexCenter';
+import { SubHeader } from '../../Components/SubHeader';
 
 type PackageDetailsProps = {
     packageNames: string[];
@@ -35,13 +36,6 @@ const ShortDescription = styled.strong`
 
 const LongDescription = styled.p`
     white-space: pre-line;
-`;
-
-const SubHeader = styled.h2`
-    font-weight: 600;
-    font-size: 1.5rem;
-    margin: 8px 0px;
-    font-family: Arial, Helvetica, sans-serif;
 `;
 
 // CRA does not allow relative imports outside of src so this is copied from
