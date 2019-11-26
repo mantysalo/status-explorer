@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import { FrontPage } from './Views/FrontPage';
-import { PackageDetails } from './Views/PackageDetails';
+import { FrontPage } from './Views/FrontPage/FrontPage';
+import { PackageDetails } from './Views/PackageDetails/PackageDetails';
 import {API_URL} from './config'
 
 const App: React.FC = () => {

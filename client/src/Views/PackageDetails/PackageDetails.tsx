@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { MainHeader } from '../Components/MainHeader';
-import { EnrichedPackageShape } from '../../../api/src/services/Enricher';
-import { API_URL } from '../config';
+import { MainHeader } from '../../Components/MainHeader';
+import { EnrichedPackageShape } from '../../../../api/src/services/Enricher';
+import { API_URL } from '../../config';
 import styled from 'styled-components';
-import { FlexCenter } from '../Components/FlexCenter';
+import { FlexCenter } from '../../Components/FlexCenter';
 
 type PackageDetailsProps = {
     packageNames: string[];
@@ -93,7 +93,7 @@ export const PackageDetails = ({ packageNames }: PackageDetailsProps) => {
                             </LongDescription>
                             {hasDependencies && (
                                 <>
-                                    <SubHeader>Dependencies</SubHeader>
+                                    <SubHeader>Depends on</SubHeader>
                                     <SeparatedList>
                                         {pkg.dependsOn.map(dep =>
                                             packageNames.includes(stripVersionNumber(dep.name)) ? (
@@ -120,8 +120,8 @@ export const PackageDetails = ({ packageNames }: PackageDetailsProps) => {
                                     <SubHeader>Depended on by</SubHeader>
                                     <SeparatedList>
                                         {pkg.dependedOnBy.map((dep: string) => (
-                                            <SeparatedListItem type='normal'>
-                                                <Link to={`/packages/${dep}`}>{dep}</Link>
+                                            <SeparatedListItem key={dep} type='normal'>
+                                                <Link key={dep} to={`/packages/${dep}`}>{dep}</Link>
                                             </SeparatedListItem>
                                         ))}
                                     </SeparatedList>
