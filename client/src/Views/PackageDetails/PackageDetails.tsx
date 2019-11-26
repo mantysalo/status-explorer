@@ -38,6 +38,11 @@ const LongDescription = styled.p`
     white-space: pre-line;
 `;
 
+const DetailsContainer = styled.main`
+    display: flex;
+    flex-direction: column;
+`;
+
 // CRA does not allow relative imports outside of src so this is copied from
 // api/src/services/Enricher.ts
 const stripVersionNumber = (dependency: string): string => {
@@ -95,57 +100,59 @@ export const PackageDetails = ({ packageNames }: PackageDetailsProps) => {
                         <header>
                             <MainHeader>{pkg.packageName}</MainHeader>
                         </header>
-
-                        <main>
+                    </FlexCenter>
+                    <DetailsContainer>
+                        <header>
                             <SubHeader>Description</SubHeader>
-                            <ShortDescription>{pkg.shortDescription}</ShortDescription>
-                            <LongDescription>
-                                {pkg.longDescription
-                                    .replace(/  +/g, ' ') // Turn 2 or more spaces in to one
-                                    .replace(/\n (?![-*])/g, '') // Remove linebreaks from non-list items
-                                    .replace(/\s\.\s\n|\s\.\s/g, '\n\n') // Replace paragraph separators with line breaks
-                                }
-                            </LongDescription>
-                            {hasDependencies && (
-                                <>
+                        </header>
+                        <ShortDescription>{pkg.shortDescription}</ShortDescription>
+                        <LongDescription>
+                            {pkg.longDescription
+                                .replace(/  +/g, ' ') // Turn 2 or more spaces in to one
+                                .replace(/\n (?![-*])/g, '') // Remove linebreaks from non-list items
+                                .replace(/\s\.\s\n|\s\.\s/g, '\n\n') // Replace paragraph separators with line breaks
+                            }
+                        </LongDescription>
+                        {hasDependencies && (
+                            <>
+                                <header>
                                     <SubHeader>Depends on</SubHeader>
-                                    <SeparatedList>
-                                        {pkg.dependsOn.map(dep =>
-                                            packageNames.includes(stripVersionNumber(dep.name)) ? (
-                                                <SeparatedListItem key={dep.name} type={dep.type}>
-                                                    <Link
-                                                        key={dep.name}
-                                                        to={`/packages/${stripVersionNumber(dep.name)}`}
-                                                    >
-                                                        {dep.name}
-                                                    </Link>
-                                                </SeparatedListItem>
-                                            ) : (
-                                                <SeparatedListItem key={dep.name} type={dep.type}>
+                                </header>
+                                <SeparatedList>
+                                    {pkg.dependsOn.map(dep =>
+                                        packageNames.includes(stripVersionNumber(dep.name)) ? (
+                                            <SeparatedListItem key={dep.name} type={dep.type}>
+                                                <Link key={dep.name} to={`/packages/${stripVersionNumber(dep.name)}`}>
                                                     {dep.name}
-                                                </SeparatedListItem>
-                                            )
-                                        )}
-                                    </SeparatedList>
-                                </>
-                            )}
-
-                            {isDependedOn && (
-                                <>
-                                    <SubHeader>Depended on by</SubHeader>
-                                    <SeparatedList>
-                                        {pkg.dependedOnBy.map((dep: string) => (
-                                            <SeparatedListItem key={dep} type='normal'>
-                                                <Link key={dep} to={`/packages/${dep}`}>
-                                                    {dep}
                                                 </Link>
                                             </SeparatedListItem>
-                                        ))}
-                                    </SeparatedList>
-                                </>
-                            )}
-                        </main>
-                    </FlexCenter>
+                                        ) : (
+                                            <SeparatedListItem key={dep.name} type={dep.type}>
+                                                {dep.name}
+                                            </SeparatedListItem>
+                                        )
+                                    )}
+                                </SeparatedList>
+                            </>
+                        )}
+
+                        {isDependedOn && (
+                            <>
+                                <header>
+                                    <SubHeader>Depended on by</SubHeader>
+                                </header>
+                                <SeparatedList>
+                                    {pkg.dependedOnBy.map((dep: string) => (
+                                        <SeparatedListItem key={dep} type='normal'>
+                                            <Link key={dep} to={`/packages/${dep}`}>
+                                                {dep}
+                                            </Link>
+                                        </SeparatedListItem>
+                                    ))}
+                                </SeparatedList>
+                            </>
+                        )}
+                    </DetailsContainer>
                 </>
             )}
         </div>
