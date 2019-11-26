@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { Reset } from 'styled-reset';
-import { createGlobalStyle } from 'styled-components';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { Reset } from "styled-reset";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -18,26 +18,25 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-if (process.env.NODE_ENV !== 'production') {
-  import('react-axe').then(axe => {
+if (process.env.NODE_ENV !== "production") {
+  import("react-axe").then(axe => {
     axe.default(React, ReactDOM, 1000);
     ReactDOM.render(
       <>
-          <App />
-          <Reset />
-          <GlobalStyle />
+        <App />
+        <Reset />
+        <GlobalStyle />
       </>,
-      document.getElementById('root')
-  );
+      document.getElementById("root")
+    );
   });
 } else {
   ReactDOM.render(
     <>
-        <App />
-        <Reset />
-        <GlobalStyle />
+      <App />
+      <Reset />
+      <GlobalStyle />
     </>,
-    document.getElementById('root')
-);
+    document.getElementById("root")
+  );
 }
-
