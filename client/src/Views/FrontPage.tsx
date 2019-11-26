@@ -39,8 +39,8 @@ export const FrontPage = ({packageNames}: FrontPageProps) => {
         <FlexCenter>
             <MainHeader>Packages</MainHeader>
             <List>
-                {packageNames.map(pkg => (
-                    <ListItem>
+                {packageNames.sort().map(pkg => (
+                    <ListItem key={pkg}>
                         <Link to={`packages/${pkg}`} key={pkg}>
                             {pkg}
                         </Link>
