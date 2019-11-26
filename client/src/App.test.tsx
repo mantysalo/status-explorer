@@ -20,7 +20,7 @@ describe('<App/>', () => {
         await wait(() => expect(getByText('foo')).toBeInTheDocument());
     });
 
-    it('allows navigating to a package', async () => {
+    it('shows essential information about package', async () => {
         const packageObject: EnrichedPackageShape = {
             packageName: 'foo',
             dependsOn: [{ name: 'bar', type: 'normal' }],
