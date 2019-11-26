@@ -28,6 +28,7 @@ describe('<App/>', () => {
             shortDescription: 'foo package',
             longDescription: 'Long description',
         };
+
         jest.spyOn(window, 'fetch')
             .mockImplementationOnce(() => {
                 return Promise.resolve({
@@ -39,10 +40,12 @@ describe('<App/>', () => {
                     json: () => Promise.resolve(packageObject),
                 } as Response);
             });
+
         const { getByText } = render(<App />);
         const fooListItem = await waitForElement(() => getByText('foo'));
+
         fireEvent.click(fooListItem);
-        
+
         await waitForElement(() => getByText(packageObject.packageName));
         await waitForElement(() => getByText(packageObject.dependsOn[0].name));
         await waitForElement(() => getByText(packageObject.dependedOnBy[0]));
