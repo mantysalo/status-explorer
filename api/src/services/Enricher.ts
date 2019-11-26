@@ -21,37 +21,30 @@ export class Enricher {
                 const splitDescription = pkg.description.split(/(\n)/);
                 const shortDescription = splitDescription[0];
                 const longDescription =
-                    splitDescription.slice(1).join(' ').replace(/\s\./g, '')
+                    splitDescription.slice(1).join(' ')
                 const enhancedDependencies: DependencyShape[] = [];
                 pkg.depends.forEach((dependency, index, dependencies) => {
                     if (dependencies[index] !== ',' && dependency !== '|') {
                         enhancedDependencies.push({
-                            name: this.stripVersionNumber(dependency),
+                            name: dependency,
                             type: this.getDependencyType(index, dependencies),
                         });
                     }
                 });
                 return {
                     packageName: pkg.package,
-                    dependsOn: this.deduplicateDependencies(enhancedDependencies),
+                    dependsOn: enhancedDependencies,
                     shortDescription,
                     longDescription,
                     dependedOnBy: dependants,
                 };
             })
-            .sort(this.sortPackagesAlphabetically);
     };
+
     private getDependencyType = (index: number, dependencies: string[]): DependencyShape['type'] => {
         if (dependencies[index - 1] === '|' || dependencies[index + 1] === '|') {
             return 'alternate';
         } else return 'normal';
-    };
-
-    private deduplicateDependencies = (dependencies: DependencyShape[]): DependencyShape[] => {
-        return dependencies.filter(
-            (dependencyA, index, dependencies) =>
-                dependencies.findIndex(dependencyB => dependencyA.name === dependencyB.name) === index
-        );
     };
 
     private mapDependants = (pkg: PackageShape, packages: PackageShape[]): string[] => {
@@ -62,18 +55,9 @@ export class Enricher {
             })
             .map(dependency => dependency.package);
     };
-
-    private sortPackagesAlphabetically = (a: EnrichedPackageShape, b: EnrichedPackageShape): number => {
-        if (a.packageName < b.packageName) {
-            return -1;
-        }
-        if (a.packageName > b.packageName) {
-            return 1;
-        }
-        return 0;
-    };
-
+    
     private stripVersionNumber = (dependency: string): string => {
         return dependency.replace(/ *\([^)]*\) */g, '');
     };
 }
+
