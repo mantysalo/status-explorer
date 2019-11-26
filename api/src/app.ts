@@ -11,16 +11,20 @@ const parser = new Parser();
 const enricher = new Enricher();
 const statusFile = fs.readFileSync(path.join(__dirname, 'status.real.txt')).toString();
 const packageObjects = enricher.enrichPackageObjects(parser.parseStatusToObjects(statusFile));
+const lastModified = new Date()
 
 router.get('/api/packages', ctx => {
     ctx.body = packageObjects;
+    ctx.lastModified = lastModified
 });
 
 router.get('/api/packages/names', ctx => {
   ctx.body = {data: packageObjects.map(pkg => pkg.packageName)};
+  ctx.lastModified = lastModified
 });
 
 router.get('/api/packages/:packageName', ctx => {
+    ctx.lastModified = lastModified
     const result = packageObjects.find(pkg => pkg.packageName === ctx.params.packageName);
     if (!result) return (ctx.status = 404);
     return (ctx.body = result);
