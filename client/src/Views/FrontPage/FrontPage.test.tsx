@@ -16,7 +16,8 @@ describe('<FrontPage />', () => {
             } as Response);
         });
         const { getAllByRole } = render(<App />);
-       await waitForElement(() => expect(getAllByRole('listitem').length).toBe(3));
+       const listItems = await waitForElement(() => getAllByRole('listitem'))
+       expect(listItems.length).toBe(3)
         
     });
 });
