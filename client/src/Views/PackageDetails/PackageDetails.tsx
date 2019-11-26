@@ -52,10 +52,10 @@ export const PackageDetails = ({ packageNames }: PackageDetailsProps) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-            const packageData: EnrichedPackageShape = await (
-                await fetch(`${API_URL}/api/packages/${packageName}`)
-            ).json();
-            setPkg(packageData);
+                const packageData: EnrichedPackageShape = await (
+                    await fetch(`${API_URL}/api/packages/${packageName}`)
+                ).json();
+                setPkg(packageData);
             } catch (error) {
                 setError(error);
             } finally {
@@ -89,7 +89,7 @@ export const PackageDetails = ({ packageNames }: PackageDetailsProps) => {
             <nav>
                 <Link to='/'>Back to listing</Link>
             </nav>
-            {pkg &&
+            {pkg && (
                 <>
                     <FlexCenter>
                         <header>
@@ -136,7 +136,9 @@ export const PackageDetails = ({ packageNames }: PackageDetailsProps) => {
                                     <SeparatedList>
                                         {pkg.dependedOnBy.map((dep: string) => (
                                             <SeparatedListItem key={dep} type='normal'>
-                                                <Link key={dep} to={`/packages/${dep}`}>{dep}</Link>
+                                                <Link key={dep} to={`/packages/${dep}`}>
+                                                    {dep}
+                                                </Link>
                                             </SeparatedListItem>
                                         ))}
                                     </SeparatedList>
@@ -144,7 +146,8 @@ export const PackageDetails = ({ packageNames }: PackageDetailsProps) => {
                             )}
                         </main>
                     </FlexCenter>
-                </>}
+                </>
+            )}
         </div>
     );
 };
