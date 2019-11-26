@@ -34,10 +34,18 @@ const ListItem = styled.li`
     }
 `;
 
-export const FrontPage = ({packageNames}: FrontPageProps) => {
+const StickyContainer = styled.div`
+    position: fixed;
+    top: 0;
+    background-color: white;
+    width: 100%
+    text-align: center;
+`;
     return (
         <FlexCenter>
+            <StickyContainer>
             <MainHeader>Packages</MainHeader>
+            </StickyContainer>
             <List>
                 {packageNames.sort().map(pkg => (
                     <ListItem key={pkg}>
