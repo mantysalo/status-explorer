@@ -48,21 +48,42 @@ export const PackageDetails = ({ packageNames }: PackageDetailsProps) => {
     const { packageName } = useParams();
     const [pkg, setPkg] = useState<EnrichedPackageShape>();
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<Error>();
     useEffect(() => {
         const fetchData = async () => {
+            try {
             const packageData: EnrichedPackageShape = await (
                 await fetch(`${API_URL}/api/packages/${packageName}`)
             ).json();
             setPkg(packageData);
-            setLoading(false)
+            } catch (error) {
+                setError(error);
+            } finally {
+                setLoading(false);
+            }
         };
+
         fetchData();
+
         document.title = packageName ? `Package Browser | ${packageName}` : 'Package Browser';
     }, [packageName]);
 
     const isDependedOn = Boolean(pkg && pkg.dependedOnBy.length);
     const hasDependencies = Boolean(pkg && pkg.dependsOn.length);
-    if (loading) return <h1>Loading</h1>
+
+    if (loading) {
+        return <h1>Loading</h1>;
+    } else if (error) {
+        return (
+            <div>
+                <nav>
+                    <Link to='/'>Back to listing</Link>
+                </nav>
+                <SubHeader>Failed to retrieve package information!</SubHeader>
+                {error.message}
+            </div>
+        );
+    }
     return (
         <div>
             <nav>
