@@ -1,6 +1,15 @@
 {
   "license": "MIT",
+  "scripts": {
+    "start": "npm run frontend & npm run backend",
+    "frontend": "cd ./client && npm start",
+    "backend": "cd ./api && npm start"
+  },
   "devDependencies": {
     "typescript": "^3.7.2"
-  }
+  },
+  "dependencies": {
+    "lerna": "^3.19.0"
+  },
+  "name": "reaktor-pretask"
 }

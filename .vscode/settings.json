@@ -1,11 +1,11 @@
 {
     "eslint.workingDirectories": [
       { 
-        "directory": "api", 
+        "directory": "packages/api", 
         "changeProcessCWD": true
     },
     { 
-      "directory": "client", 
+      "directory": "packages/client", 
       "changeProcessCWD": true
   }
 ],
