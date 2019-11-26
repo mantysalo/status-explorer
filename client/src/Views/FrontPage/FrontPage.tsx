@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FlexCenter } from '../../Components/FlexCenter';
 import { MainHeader } from '../../Components/MainHeader';
+import { SubHeader } from '../PackageDetails/PackageDetails';
 
 type FrontPageProps = {
     packageNames: string[];
+    error?: Error;
 };
 
 const List = styled.ul`
@@ -43,21 +45,32 @@ const StickyContainer = styled.div`
     text-align: center;
 `;
 
-export const FrontPage = ({ packageNames }: FrontPageProps) => {
+const ErrorContainer = styled.div`
+    margin-top: 50px;
+`;
+
+export const FrontPage = ({ packageNames, error }: FrontPageProps) => {
     return (
         <FlexCenter>
             <StickyContainer>
                 <MainHeader>Packages</MainHeader>
             </StickyContainer>
-            <List>
-                {packageNames.sort().map(pkg => (
-                    <ListItem key={pkg}>
-                        <Link to={`packages/${pkg}`} key={pkg}>
-                            {pkg}
-                        </Link>
-                    </ListItem>
-                ))}
-            </List>
+            {error ? (
+                <ErrorContainer>
+                    <SubHeader>Failed to fetch packages!</SubHeader>
+                    {error.message}
+                </ErrorContainer>
+            ) : (
+                <List>
+                    {packageNames.sort().map(pkg => (
+                        <ListItem key={pkg}>
+                            <Link to={`packages/${pkg}`} key={pkg}>
+                                {pkg}
+                            </Link>
+                        </ListItem>
+                    ))}
+                </List>
+            )}
         </FlexCenter>
     );
 };
