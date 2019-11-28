@@ -11,9 +11,6 @@
     "test:frontend": "lerna run test --scope client",
     "test:backend": "lerna run test --scope api"
   },
-  "devDependencies": {
-    "typescript": "^3.7.2"
-  },
   "dependencies": {
     "lerna": "^3.19.0"
   },
