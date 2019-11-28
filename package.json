@@ -1,9 +1,15 @@
 {
   "license": "MIT",
   "scripts": {
-    "start": "npm run frontend & npm run backend",
-    "frontend": "cd ./client && npm start",
-    "backend": "cd ./api && npm start"
+    "start": "lerna run start",
+    "start:frontend": "lerna run start --scope client",
+    "start:backend": "lerna run start --scope api",
+    "build": "lerna run build",
+    "build:frontend": "lerna run build --scope client",
+    "build:backend": "lerna run build --scope api",
+    "test": "lerna run test",
+    "test:frontend": "lerna run test --scope client",
+    "test:backend": "lerna run test --scope api"
   },
   "devDependencies": {
     "typescript": "^3.7.2"
