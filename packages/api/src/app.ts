@@ -14,11 +14,6 @@ const packageObjects = enricher.enrichPackageObjects(parser.parseStatusToObjects
 const lastModified = new Date()
 
 router.get('/api/packages', ctx => {
-    ctx.body = packageObjects;
-    ctx.lastModified = lastModified
-});
-
-router.get('/api/packages/names', ctx => {
   ctx.body = {data: packageObjects.map(pkg => pkg.packageName)};
   ctx.lastModified = lastModified
 });
