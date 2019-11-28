@@ -29,8 +29,8 @@ yarn lerna run test --scope api
 
 ## Requirements
 
-Node >=v8.16.2
-npm or Yarn
+- Node >=v8.16.2
+- npm or Yarn
 
 ## Technology used
 
