@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { FrontPage } from "./Views/FrontPage/FrontPage";
 import { PackageDetails } from "./Views/PackageDetails/PackageDetails";
-import { API_URL } from "./config";
+import { API_URL, BASENAME } from "./config";
 
 const App: React.FC = () => {
   const [packageNames, setPackageNames] = useState<string[]>([]);
@@ -23,7 +23,7 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <Router>
+    <Router basename={BASENAME}>
       <Switch>
         <Route exact path="/">
           <FrontPage error={error} packageNames={packageNames} />
