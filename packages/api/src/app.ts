@@ -1,5 +1,6 @@
 import Koa from 'koa';
 import Router from 'koa-router';
+import cors from '@koa/cors'
 import fs from 'fs';
 import path from 'path';
 import { Parser } from './services/Parser';
@@ -25,6 +26,6 @@ router.get('/api/packages/:packageName', ctx => {
     return (ctx.body = result);
 });
 
-app.use(router.routes()).use(router.allowedMethods());
+app.use(router.routes()).use(router.allowedMethods()).use(cors());
 
 app.listen(4000);
