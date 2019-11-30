@@ -6,6 +6,8 @@ import path from 'path';
 import { Parser } from './services/Parser';
 import { Enricher } from './services/Enricher';
 
+const PORT = 4000
+
 const app = new Koa();
 const router = new Router();
 const parser = new Parser();
@@ -31,4 +33,4 @@ app
 .use(router.routes())
 .use(router.allowedMethods());
 
-app.listen(4000);
+app.listen(PORT, () => console.log(`API Server running on port ${PORT}`));
