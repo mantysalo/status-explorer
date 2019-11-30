@@ -12,7 +12,7 @@ const App: React.FC = () => {
     const fetchData = async () => {
       try {
         const packageNames = await (
-          await fetch(`${API_URL}/api/packages/names`)
+          await fetch(`${API_URL}/api/packages`)
         ).json();
         setPackageNames(packageNames.data);
       } catch (error) {
