@@ -23,7 +23,7 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <Router basename={BASENAME}>
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path="/">
           <FrontPage error={error} packageNames={packageNames} />
