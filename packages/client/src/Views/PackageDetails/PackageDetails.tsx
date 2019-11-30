@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { MainHeader } from '../../Components/MainHeader';
-import { EnrichedPackageShape } from '../../../../api/src/services/Enricher';
+import { EnrichedPackageShape } from 'api/src/services/Enricher';
 import { API_URL } from '../../config';
 import styled from 'styled-components';
 import { FlexCenter } from '../../Components/FlexCenter';
