@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "scripts": {
-    "start": "lerna run start",
+    "start": "lerna run start --parallel",
     "start:frontend": "lerna run start --scope client",
     "start:backend": "lerna run start --scope api",
     "build": "lerna run build",
