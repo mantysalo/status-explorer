@@ -13,8 +13,12 @@ type FrontPageProps = {
 const List = styled.ul`
     list-style-type: none;
     text-align: center;
-    margin-top: 1rem;
 `;
+
+
+const Container = styled.main`
+margin-top: 3rem;
+`
 
 const ListItem = styled.li`
     font-size: 1.3rem;
@@ -57,7 +61,7 @@ export const FrontPage = ({ packageNames, error }: FrontPageProps) => {
                 <MainHeader>Packages</MainHeader>
                 </header>
             </StickyContainer>
-            <main>
+            <Container>
             {error ? (
                 <ErrorContainer>
                     <SubHeader>Failed to fetch packages!</SubHeader>
@@ -74,7 +78,7 @@ export const FrontPage = ({ packageNames, error }: FrontPageProps) => {
                     ))}
                 </List>
             )}
-            </main>
+            </Container>
         </FlexCenter>
     );
 };
