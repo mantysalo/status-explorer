@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "src/app.ts", "use": "@now/node-server" }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/src/app.ts",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/api/packages",
+      "dest": "/src/app.ts",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/api/packages/(.*)",
+      "dest": "/src/app.ts",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/api/packages/names",
+      "dest": "/src/app.ts",
+      "methods": ["GET"]
+    }
+  ]
+}
