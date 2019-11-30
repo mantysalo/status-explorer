@@ -47,7 +47,6 @@
     "@testing-library/react": "^9.3.2",
     "@types/react-axe": "^3.1.0",
     "@types/styled-components": "^4.4.0",
-    "now": "^16.6.0",
     "prettier": "^1.19.1",
     "react-axe": "^3.3.0",
     "typescript": "^3.7.2"
