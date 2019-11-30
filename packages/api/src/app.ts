@@ -26,6 +26,9 @@ router.get('/api/packages/:packageName', ctx => {
     return (ctx.body = result);
 });
 
-app.use(router.routes()).use(router.allowedMethods()).use(cors());
+app
+.use(cors())
+.use(router.routes())
+.use(router.allowedMethods());
 
 app.listen(4000);
