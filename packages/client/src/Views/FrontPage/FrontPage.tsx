@@ -53,8 +53,11 @@ export const FrontPage = ({ packageNames, error }: FrontPageProps) => {
     return (
         <FlexCenter>
             <StickyContainer>
+                <header>
                 <MainHeader>Packages</MainHeader>
+                </header>
             </StickyContainer>
+            <main>
             {error ? (
                 <ErrorContainer>
                     <SubHeader>Failed to fetch packages!</SubHeader>
@@ -71,6 +74,7 @@ export const FrontPage = ({ packageNames, error }: FrontPageProps) => {
                     ))}
                 </List>
             )}
+            </main>
         </FlexCenter>
     );
 };
