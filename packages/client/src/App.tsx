@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { FrontPage } from "./Views/FrontPage/FrontPage";
 import { PackageDetails } from "./Views/PackageDetails/PackageDetails";
 import { API_URL, BASENAME } from "./config";
