@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "https://rikumantysalo.github.io/status-explorer/static/js/main.7a407163.chunk.js",
-    "main.js.map": "https://rikumantysalo.github.io/status-explorer/static/js/main.7a407163.chunk.js.map",
-    "runtime-main.js": "https://rikumantysalo.github.io/status-explorer/static/js/runtime-main.703c1ae7.js",
-    "runtime-main.js.map": "https://rikumantysalo.github.io/status-explorer/static/js/runtime-main.703c1ae7.js.map",
-    "static/js/2.de46c2d0.chunk.js": "https://rikumantysalo.github.io/status-explorer/static/js/2.de46c2d0.chunk.js",
-    "static/js/2.de46c2d0.chunk.js.map": "https://rikumantysalo.github.io/status-explorer/static/js/2.de46c2d0.chunk.js.map",
-    "index.html": "https://rikumantysalo.github.io/status-explorer/index.html",
-    "precache-manifest.c4e0bc5f93a79e4233184da593e3d93f.js": "https://rikumantysalo.github.io/status-explorer/precache-manifest.c4e0bc5f93a79e4233184da593e3d93f.js",
-    "service-worker.js": "https://rikumantysalo.github.io/status-explorer/service-worker.js"
+    "main.js": "/status-explorer/static/js/main.70830e51.chunk.js",
+    "main.js.map": "/status-explorer/static/js/main.70830e51.chunk.js.map",
+    "runtime-main.js": "/status-explorer/static/js/runtime-main.2e517d60.js",
+    "runtime-main.js.map": "/status-explorer/static/js/runtime-main.2e517d60.js.map",
+    "static/js/2.024ce25f.chunk.js": "/status-explorer/static/js/2.024ce25f.chunk.js",
+    "static/js/2.024ce25f.chunk.js.map": "/status-explorer/static/js/2.024ce25f.chunk.js.map",
+    "index.html": "/status-explorer/index.html",
+    "precache-manifest.a42a000ee656147af3e70ea0a8675638.js": "/status-explorer/precache-manifest.a42a000ee656147af3e70ea0a8675638.js",
+    "service-worker.js": "/status-explorer/service-worker.js"
   },
   "entrypoints": [
-    "static/js/runtime-main.703c1ae7.js",
-    "static/js/2.de46c2d0.chunk.js",
-    "static/js/main.7a407163.chunk.js"
+    "static/js/runtime-main.2e517d60.js",
+    "static/js/2.024ce25f.chunk.js",
+    "static/js/main.70830e51.chunk.js"
   ]
 }
