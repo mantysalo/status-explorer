@@ -1,7 +1,6 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "homepage": "https://rikumantysalo.github.io/status-explorer",
   "private": true,
   "dependencies": {
     "@types/jest": "24.0.23",
@@ -19,7 +18,7 @@
     "styled-reset": "^4.0.7"
   },
   "scripts": {
-    "predeploy": "yarn run build",
+    "predeploy": "PUBLIC_URL='/status-explorer' yarn run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
