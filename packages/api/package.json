@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon",
     "build": "tsc",
+    "deploy": "now",
     "test": "jest"
   },
   "devDependencies": {
