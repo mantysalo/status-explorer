@@ -19,7 +19,7 @@ jobs:
       run: |
         yarn
         yarn lerna bootstrap
-        yarn build
+        yarn build:ci
         yarn test
     - name: deploy frontend to gh pages
       uses: JamesIves/github-pages-deploy-action@releases/v3
