@@ -30,6 +30,6 @@ jobs:
         FOLDER: packages/client/build # The folder the action should deploy.
     - name: deploy backend to now
       run: |
-        yarn lerna run deploy --scope api -- -- --token ${{ secrets.ZEIT_TOKEN }}
+        yarn deploy:backend -- -- --token ${{ secrets.ZEIT_TOKEN }}
       env:
         CI: true
