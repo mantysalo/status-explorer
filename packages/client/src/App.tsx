@@ -3,6 +3,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { FrontPage } from "./Views/FrontPage/FrontPage";
 import { PackageDetails } from "./Views/PackageDetails/PackageDetails";
 import { API_URL } from "./config";
+import { NotFound } from "./Views/NotFound/NotFound";
 
 const App: React.FC = () => {
   const [packageNames, setPackageNames] = useState<string[]>([]);
@@ -31,7 +32,9 @@ const App: React.FC = () => {
         <Route path="/packages/:packageName">
           <PackageDetails packageNames={packageNames} />
         </Route>
-        <Route>404</Route>
+        <Route>
+          <NotFound/>
+        </Route>
       </Switch>
     </Router>
   );
