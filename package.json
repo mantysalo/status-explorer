@@ -5,7 +5,7 @@
     "start:frontend": "lerna run start --scope client",
     "start:backend": "lerna run start --scope api",
     "build": "lerna run build",
-    "build:ci": "'PUBLIC_URL='/status-explorer' lerna run build",
+    "build:ci": "PUBLIC_URL='/status-explorer' lerna run build",
     "build:frontend": "lerna run build --scope client",
     "build:backend": "lerna run build --scope api",
     "deploy": "lerna run deploy",
