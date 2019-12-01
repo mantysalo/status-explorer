@@ -85,7 +85,7 @@ export const FrontPage = ({ packageNames, error }: FrontPageProps) => {
                     <List>
                         {packageNames.sort().map(pkg => (
                             <ListItem key={pkg}>
-                                <Link to={`packages/${pkg}`} key={pkg}>
+                                <Link to={`packages/${pkg}`}>
                                     {pkg}
                                 </Link>
                             </ListItem>

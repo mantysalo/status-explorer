@@ -132,7 +132,7 @@ export const PackageDetails = ({ packageNames }: PackageDetailsProps) => {
                                     {pkg.dependsOn.map(dep =>
                                         packageNames.includes(stripVersionNumber(dep.name)) ? (
                                             <SeparatedListItem key={dep.name} type={dep.type}>
-                                                <Link key={dep.name} to={`/packages/${stripVersionNumber(dep.name)}`}>
+                                                <Link to={`/packages/${stripVersionNumber(dep.name)}`}>
                                                     {dep.name}
                                                 </Link>
                                             </SeparatedListItem>
@@ -154,7 +154,7 @@ export const PackageDetails = ({ packageNames }: PackageDetailsProps) => {
                                 <SeparatedList>
                                     {pkg.dependedOnBy.map((dep: string) => (
                                         <SeparatedListItem key={dep} type='normal'>
-                                            <Link key={dep} to={`/packages/${dep}`}>
+                                            <Link to={`/packages/${dep}`}>
                                                 {dep}
                                             </Link>
                                         </SeparatedListItem>
