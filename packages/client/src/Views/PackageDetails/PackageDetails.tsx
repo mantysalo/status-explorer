@@ -6,6 +6,7 @@ import { API_URL } from '../../config';
 import styled from 'styled-components';
 import { FlexCenter } from '../../Components/FlexCenter';
 import { SubHeader } from '../../Components/SubHeader';
+import { LoadingSpinner } from '../../Components/LoadingSpinner';
 
 type PackageDetailsProps = {
     packageNames: string[];
@@ -49,6 +50,12 @@ const stripVersionNumber = (dependency: string): string => {
     return dependency.replace(/ *\([^)]*\) */g, '');
 };
 
+const Navigation = () => (
+    <nav>
+        <Link to='/'>Back to listing</Link>
+    </nav>
+);
+
 export const PackageDetails = ({ packageNames }: PackageDetailsProps) => {
     const { packageName } = useParams();
     const [pkg, setPkg] = useState<EnrichedPackageShape>();
@@ -77,13 +84,18 @@ export const PackageDetails = ({ packageNames }: PackageDetailsProps) => {
     const hasDependencies = Boolean(pkg && pkg.dependsOn.length);
 
     if (loading) {
-        return <h1>Loading</h1>;
+        return (
+            <div>
+                <Navigation />
+                <FlexCenter>
+                    <LoadingSpinner />
+                </FlexCenter>
+            </div>
+        );
     } else if (error) {
         return (
             <div>
-                <nav>
-                    <Link to='/'>Back to listing</Link>
-                </nav>
+                <Navigation />
                 <SubHeader>Failed to retrieve package information!</SubHeader>
                 {error.message}
             </div>
@@ -91,9 +103,7 @@ export const PackageDetails = ({ packageNames }: PackageDetailsProps) => {
     }
     return (
         <div>
-            <nav>
-                <Link to='/'>Back to listing</Link>
-            </nav>
+            <Navigation />
             {pkg && (
                 <>
                     <FlexCenter>
