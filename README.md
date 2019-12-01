@@ -1,6 +1,10 @@
-# Status file browser
+# Status file explorer
 
 This monorepo contains a frontend and backend implementation for browsing debian control files, specifically the one located in `/var/lib/dpkg/status`. A mock file is included within the repo, so you don't need to have a debian system to enjoy this application.
+
+## Live demo
+
+https://rikumantysalo.github.io/status-explorer/#/
 
 ## Getting started
 
