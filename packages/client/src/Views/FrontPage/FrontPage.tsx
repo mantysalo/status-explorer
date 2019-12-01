@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { FlexCenter } from '../../Components/FlexCenter';
 import { MainHeader } from '../../Components/MainHeader';
 import { SubHeader } from '../../Components/SubHeader';
+import { LoadingSpinner } from '../../Components/LoadingSpinner';
 
 type FrontPageProps = {
     packageNames: string[];
@@ -15,10 +16,9 @@ const List = styled.ul`
     text-align: center;
 `;
 
-
 const Container = styled.main`
-margin-top: 3rem;
-`
+    margin-top: 3rem;
+`;
 
 const ListItem = styled.li`
     font-size: 1.3rem;
@@ -53,31 +53,45 @@ const ErrorContainer = styled.div`
     margin-top: 50px;
 `;
 
+const Header = () => (
+    <StickyContainer>
+        <header>
+            <MainHeader>Packages</MainHeader>
+        </header>
+    </StickyContainer>
+);
+
 export const FrontPage = ({ packageNames, error }: FrontPageProps) => {
+    if (packageNames.length === 0 && !error) {
+        return (
+            <FlexCenter>
+                <Header />
+                <Container>
+                    <LoadingSpinner />
+                </Container>
+            </FlexCenter>
+        );
+    }
     return (
         <FlexCenter>
-            <StickyContainer>
-                <header>
-                <MainHeader>Packages</MainHeader>
-                </header>
-            </StickyContainer>
+            <Header />
             <Container>
-            {error ? (
-                <ErrorContainer>
-                    <SubHeader>Failed to fetch packages!</SubHeader>
-                    {error.message}
-                </ErrorContainer>
-            ) : (
-                <List>
-                    {packageNames.sort().map(pkg => (
-                        <ListItem key={pkg}>
-                            <Link to={`packages/${pkg}`} key={pkg}>
-                                {pkg}
-                            </Link>
-                        </ListItem>
-                    ))}
-                </List>
-            )}
+                {error ? (
+                    <ErrorContainer>
+                        <SubHeader>Failed to fetch packages!</SubHeader>
+                        {error.message}
+                    </ErrorContainer>
+                ) : (
+                    <List>
+                        {packageNames.sort().map(pkg => (
+                            <ListItem key={pkg}>
+                                <Link to={`packages/${pkg}`} key={pkg}>
+                                    {pkg}
+                                </Link>
+                            </ListItem>
+                        ))}
+                    </List>
+                )}
             </Container>
         </FlexCenter>
     );
