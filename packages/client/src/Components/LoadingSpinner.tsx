@@ -9,7 +9,7 @@ export const LoadingSpinner = () => {
     const timer = setTimeout(() => {
       setIsVisible(true)
     }, 150);
-    return clearTimeout(timer)
+    return () => clearTimeout(timer)
   }, [])
 
   return (
