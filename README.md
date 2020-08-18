@@ -4,7 +4,7 @@ This monorepo contains a frontend and backend implementation for browsing debian
 
 ## Live demo
 
-https://rikumantysalo.github.io/status-explorer/#/
+https://mantysalo.github.io/status-explorer/#/
 
 ## Getting started
 
